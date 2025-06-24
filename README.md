@@ -1,12 +1,11 @@
-# Adversarial Defense and Temporal Pattern Learning for Autonomous Vehicle Perception
+# Adversarial Defence and Temporal Pattern Learning for Autonomous Vehicle Perception
 
 ## Description
 
-This project, developed by **Dev Dahiya**, proposes a defense framework to enhance the perception robustness of autonomous vehicles (AVs) against adversarial attacks. The system combines **input transformation (WebP compression)**, **deep learning-based object detection (YOLOv8)**, **multi-modal data fusion (LiDAR + Camera)**, and **temporal consistency enforcement using an LSTM network**.
+This project, developed by **Dev Dahiya**, proposes a defence framework to enhance the perception robustness of autonomous vehicles (AVs) against adversarial attacks. The system combines **input transformation (WebP compression)**, **deep learning-based object detection (YOLOv8)**, **multi-modal data fusion (LiDAR + Camera)**, and **temporal consistency enforcement using an LSTM network**.
 
 Built on the **Waymo Open Dataset**, the solution targets real-world adversarial challenges by providing resilience against perturbations that mislead perception modules of AV systems. The approach effectively handles both digital and potential physical perturbations in the environment while maintaining real-time operational feasibility.
 
----
 
 ## Concept and Motivation
 
@@ -14,16 +13,15 @@ Autonomous vehicles rely on machine learning models for interpreting sensor data
 
 1. **Defend Against Image Perturbations:** WebP compression is used to remove high-frequency adversarial noise.
 2. **Integrate Multi-Modal Sensing:** LiDAR’s spatial consistency is fused with camera data to reduce dependency on a single modality.
-3. **Maintain Temporal Consistency:** A Bidirectional LSTM processes sequences of frames, learning object movement and behavior across time to predict and correct frame-level detection failures.
+3. **Maintain Temporal Consistency:** A Bidirectional LSTM processes sequences of frames, learning object movement and behaviour across time to predict and correct frame-level detection failures.
 4. **Ensure Real-Time Feasibility:** Lightweight architectures like YOLOv8-nano and minimal overhead preprocessing ensure deployment potential in real AV systems.
 
----
 
 ## System Architecture
 
 1. **Data Extraction:**
 
-   * Utilizes Waymo Open Dataset TFRecord files.
+   * Utilises Waymo Open Dataset TFRecord files.
    * Extracts synchronized **front-camera frames (JPEG)** and **3D LiDAR point clouds (NumPy)** ensuring millisecond-level temporal alignment.
 
 2. **Adversarial Defense:**
@@ -33,7 +31,7 @@ Autonomous vehicles rely on machine learning models for interpreting sensor data
 3. **Object Detection (YOLOv8):**
 
    * Compressed frames are passed through **YOLOv8-nano** for real-time object detection.
-   * Outputs include bounding boxes, class labels, confidence scores.
+   * Outputs include bounding boxes, class labels, and confidence scores.
 
 4. **LiDAR Fusion:**
 
@@ -45,12 +43,10 @@ Autonomous vehicles rely on machine learning models for interpreting sensor data
    * A Bidirectional LSTM processes sequences (length=10) of the combined feature vectors.
    * Predicts object classes in subsequent frames, improving detection reliability when YOLO misclassifies due to adversarial perturbations.
 
-6. **Visualization and Output:**
+6. **Visualisation and Output:**
 
    * Detections and LSTM predictions are annotated on frames.
    * Results can be saved as a video for review.
-
----
 
 ## Installation
 
@@ -59,8 +55,6 @@ git clone https://github.com/dev7777777dahiya/Autonomous-Vehicle-Perception.git
 cd Autonomous-Vehicle-Perception
 pip install -r requirements.txt
 ```
-
----
 
 ## Usage
 
@@ -94,8 +88,6 @@ pip install -r requirements.txt
    python webp_yolo_lstm.py
    ```
 
----
-
 ## Explanation of Logic and Flow
 
 1. **Data Flow:**
@@ -117,8 +109,6 @@ pip install -r requirements.txt
    * Frame is annotated with YOLO and LSTM labels for comparison.
    * Optionally saved as an output video.
 
----
-
 ## Experimental Results Summary
 
 | Configuration              | Detection Accuracy | False Negatives | LSTM Recovery |
@@ -131,28 +121,20 @@ pip install -r requirements.txt
 * **LSTM** recovered detections missed by YOLO in 31% of cases, using temporal context.
 * **LiDAR Fusion** provided stability against visual perturbations.
 
----
-
 ## Future Enhancements
 
 * **Adversarial Training:** Incorporate adversarial examples in LSTM training.
 * **Uncertainty Awareness:** Bayesian LSTM for predictive uncertainty estimation.
 * **Geometry-Aware Fusion:** Transition to early-fusion models.
-* **Real-Time Deployment:** Optimize models for embedded AV hardware.
-
----
+* **Real-Time Deployment:** Optimise models for embedded AV hardware.
 
 ## Contributing
 
 Contributions are welcome. Fork the repository and submit pull requests with proposed changes.
 
----
-
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
-
----
 
 ## Acknowledgments
 
